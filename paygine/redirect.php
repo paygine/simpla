@@ -76,7 +76,7 @@ try {
 			throw new Exception("Invalid signature");
 
 		// check order state
-		if ($response->type != 'PURCHASE' || $response->state != 'APPROVED')
+        if (($response->type != 'PURCHASE' && $response->type != 'PURCHASE_BY_QR' && $response->type != 'AUTHORIZE') || $response->state != 'APPROVED')
 			continue;
 
 		$amount = $response->amount / 100.0;

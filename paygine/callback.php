@@ -21,7 +21,7 @@ $xml = simplexml_load_string($xml);
 $response = json_decode(json_encode($xml));
 
 
-if($response->type != 'PURCHASE' || $response->state != 'APPROVED')
+if (($response->type != 'PURCHASE' && $response->type != 'PURCHASE_BY_QR' && $response->type != 'AUTHORIZE') || $response->state != 'APPROVED')
 	exit();
 	
 // Сумма, которую заплатил покупатель
